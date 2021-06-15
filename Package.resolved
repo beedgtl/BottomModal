@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PanModal",
+        "repositoryURL": "https://github.com/baevra/PanModal",
+        "state": {
+          "branch": "master",
+          "revision": "ba721e891b4f32fa015460ad5003d80054171f07",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
