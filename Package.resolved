@@ -5,9 +5,9 @@
         "package": "PanModal",
         "repositoryURL": "https://github.com/baevra/PanModal",
         "state": {
-          "branch": "master",
+          "branch": null,
           "revision": "ba721e891b4f32fa015460ad5003d80054171f07",
-          "version": null
+          "version": "1.2.8"
         }
       }
     ]
