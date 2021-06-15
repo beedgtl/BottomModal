@@ -20,6 +20,8 @@ public protocol BottomSheetPresentationStyle {
 }
 
 public struct BottomSheetIntrinsicPresentationStyle: BottomSheetPresentationStyle {
+  public init() {}
+
   public func makePanModalController(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration
@@ -34,6 +36,10 @@ public struct BottomSheetIntrinsicPresentationStyle: BottomSheetPresentationStyl
 public struct BottomSheetFixedPresentationStyle: BottomSheetPresentationStyle {
   public let height: BottomSheetHeight
 
+  public init(height: BottomSheetHeight) {
+    self.height = height
+  }
+
   public func makePanModalController(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration
@@ -47,6 +53,8 @@ public struct BottomSheetFixedPresentationStyle: BottomSheetPresentationStyle {
 }
 
 public struct BottomSheetFullPresentationStyle: BottomSheetPresentationStyle {
+  public init() {}
+  
   public func makePanModalController(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration
@@ -60,6 +68,10 @@ public struct BottomSheetFullPresentationStyle: BottomSheetPresentationStyle {
 
 public struct BottomSheetDynamicPresentationStyle: BottomSheetPresentationStyle {
   let anchorHeight: BottomSheetHeight
+
+  public init(anchorHeight: BottomSheetHeight) {
+    self.anchorHeight = anchorHeight
+  }
 
   public func makePanModalController(
     rootViewController: UIViewController,

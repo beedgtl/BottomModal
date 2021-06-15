@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import PanModal
 
-class FullPanModalController: BasePanModalController {
+final class FullPanModalController: BasePanModalController {
   override var anchorModalToLongForm: Bool { panScrollable != nil }
   override var longFormHeight: PanModalHeight { .maxHeight }
   override var shortFormHeight: PanModalHeight { longFormHeight }

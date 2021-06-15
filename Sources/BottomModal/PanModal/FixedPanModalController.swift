@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import PanModal
 
-class FixedPanModalController: BasePanModalController {
+final class FixedPanModalController: BasePanModalController {
   let height: BottomSheetHeight
   override var anchorModalToLongForm: Bool { panScrollable != nil }
   override var longFormHeight: PanModalHeight { .contentHeight(fixedHeight + keyboardHeight) }

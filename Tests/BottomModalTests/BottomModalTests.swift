@@ -1,4 +1,5 @@
     import XCTest
+    import SwiftUI
     @testable import BottomModal
 
     final class BottomModalTests: XCTestCase {
@@ -7,5 +8,12 @@
             // Use XCTAssert and related functions to verify your tests produce the correct
             // results.
 //            XCTAssertEqual(BottomModal().text, "Hello, World!")
+//          Text("Hello")
+//            .bottomSheet(
+//              isPresented: .constant(true),
+//              presentationStyle: BottomSheetFixedPresentationStyle(height: .points(200))
+//            ) {
+//              Text("SHeet")
+//            }
         }
     }

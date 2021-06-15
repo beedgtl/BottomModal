@@ -41,20 +41,24 @@ public protocol BottomAlertStyle {
 }
 
 extension BottomAlertStyle {
-  func makeBodyTypeErased(configuration: Self.Configuration) -> AnyView {
+  public func makeBodyTypeErased(configuration: Self.Configuration) -> AnyView {
     AnyView(makeBody(configuration: configuration))
   }
 }
 
 public struct BottomAlertStyleConfiguration {
   public let content: AnyView
+
+  public init(content: AnyView) {
+    self.content = content
+  }
 }
 
 // MARK: - Type Erased Style
 public struct AnyBottomAlertStyle: BottomAlertStyle {
   private let makeBody: (BottomAlertStyle.Configuration) -> AnyView
 
-  init<Style: BottomAlertStyle>(_ style: Style) {
+  public init<Style: BottomAlertStyle>(_ style: Style) {
     makeBody = style.makeBodyTypeErased
   }
 
@@ -67,6 +71,8 @@ public struct AnyBottomAlertStyle: BottomAlertStyle {
 
 // MARK: - Default Style
 public struct DefaultBottomAlertStyle: BottomAlertStyle {
+  public init() {}
+
   public func makeBody(configuration: Configuration) -> some View {
     BottomAlert(content: configuration.content)
   }

@@ -45,6 +45,10 @@ extension BottomSheetStyle {
 
 public struct BottomSheetStyleConfiguration {
   public let content: AnyView
+
+  public init(content: AnyView) {
+    self.content = content
+  }
 }
 
 // MARK: - Type Erased Style
@@ -64,6 +68,8 @@ public struct AnyBottomSheetStyle: BottomSheetStyle {
 
 // MARK: - Default Style
 public struct DefaultBottomSheetStyle: BottomSheetStyle {
+  public init() {}
+
   public func makeBody(configuration: Configuration) -> some View {
     BottomSheet(content: configuration.content)
   }

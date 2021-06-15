@@ -11,7 +11,7 @@ import SwiftUI
 extension View {
   public func bottomSheet<Item, Content>(
     item: Binding<Item?>,
-    presentationStyle: BottomSheetPresentationStyle? = nil,
+    presentationStyle: BottomSheetPresentationStyle = BottomSheetIntrinsicPresentationStyle(),
     presentationTarget: BottomSheetPresentationTarget = .controller,
     onDismiss: (() -> Void)? = nil,
     @ViewBuilder content: @escaping (Item) -> Content
@@ -20,7 +20,6 @@ extension View {
       get: { item.wrappedValue != nil },
       set: { item.wrappedValue = $0 ? item.wrappedValue : nil }
     )
-    let presentationStyle = presentationStyle ?? BottomSheetIntrinsicPresentationStyle()
     guard let value = item.wrappedValue else {
       let bottomSheetModifier = BottomSheetModifier<Content>(
         isPresented: isPresented,
@@ -45,14 +44,14 @@ extension View {
 
   public func bottomSheet<Content>(
     isPresented: Binding<Bool>,
-    presentationStyle: BottomSheetPresentationStyle? = nil,
+    presentationStyle: BottomSheetPresentationStyle = BottomSheetIntrinsicPresentationStyle(),
     presentationTarget: BottomSheetPresentationTarget = .controller,
     onDismiss: (() -> Void)? = nil,
     @ViewBuilder content: @escaping () -> Content
   ) -> some View where Content: View {
     let bottomSheetModifier = BottomSheetModifier(
       isPresented: isPresented,
-      presentationStyle: presentationStyle ?? BottomSheetIntrinsicPresentationStyle(),
+      presentationStyle: presentationStyle,
       presentationTarget: presentationTarget,
       onDismiss: onDismiss,
       sheetContent: content
