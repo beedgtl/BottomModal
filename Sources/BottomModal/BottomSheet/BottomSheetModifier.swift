@@ -10,7 +10,7 @@ import Foundation
 import PanModal
 import SwiftUI
 
-struct BottomSheetModifier<SheetContent: View>: ViewModifier {
+public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
   @Binding var isPresented: Bool
   public let presentationStyle: BottomSheetPresentationStyle
   public let presentationTarget: BottomSheetPresentationTarget
@@ -20,6 +20,20 @@ struct BottomSheetModifier<SheetContent: View>: ViewModifier {
 
   @Environment(\.bottomSheetStyle) var style
   @Environment(\.bottomSheetConfiguration) var configuration
+
+  public init(
+    isPresented: Binding<Bool>,
+    presentationStyle: BottomSheetPresentationStyle,
+    presentationTarget: BottomSheetPresentationTarget,
+    onDismiss: (() -> Void)?,
+    sheetContent: (() -> SheetContent)?
+  ) {
+    self._isPresented = isPresented
+    self.presentationStyle = presentationStyle
+    self.presentationTarget = presentationTarget
+    self.onDismiss = onDismiss
+    self.sheetContent = sheetContent
+  }
 
   private var presentPublisher: AnyPublisher<AnyView, Never> {
     Just(isPresented)

@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 import PanModal
 
-struct BottomAlertModifier<AlertContent: View>: ViewModifier {
+public struct BottomAlertModifier<AlertContent: View>: ViewModifier {
   @Binding var isPresented: Bool
   public let onDismiss: (() -> Void)?
   public let alertContent: (() -> AlertContent)?
@@ -18,6 +18,16 @@ struct BottomAlertModifier<AlertContent: View>: ViewModifier {
 
   @Environment(\.bottomAlertStyle) var style
   @Environment(\.bottomAlertConfiguration) var configuration
+
+  public init(
+    isPresented: Binding<Bool>,
+    onDismiss: (() -> Void)?,
+    alertContent: (() -> AlertContent)?
+  ) {
+    self._isPresented = isPresented
+    self.onDismiss = onDismiss
+    self.alertContent = alertContent
+  }
 
   private var presentPublisher: AnyPublisher<AnyView, Never> {
     Just(isPresented)
