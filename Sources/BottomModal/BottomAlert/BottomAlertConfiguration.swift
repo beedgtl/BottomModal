@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PanModal
 
 // MARK: - Environment Key
 extension EnvironmentValues {
@@ -39,6 +40,7 @@ public protocol BottomAlertConfiguration {
   var allowsExtendedPanScrolling: Bool { get }
   var allowsDragToDismiss: Bool { get }
   var allowsTapToDismiss: Bool { get }
+  var backgroundInteraction: PanModalBackgroundInteraction { get }
   var onPresent: (() -> Void)? { get }
   var onDismiss: (() -> Void)? { get }
 }
@@ -52,6 +54,7 @@ public struct DefaultBottomAlertConfiguration: BottomAlertConfiguration {
   public var allowsExtendedPanScrolling: Bool
   public var allowsDragToDismiss: Bool
   public var allowsTapToDismiss: Bool
+  public var backgroundInteraction: PanModalBackgroundInteraction
   public var onPresent: (() -> Void)?
   public var onDismiss: (() -> Void)?
 
@@ -67,6 +70,7 @@ public struct DefaultBottomAlertConfiguration: BottomAlertConfiguration {
     self.allowsExtendedPanScrolling = false
     self.allowsDragToDismiss = true
     self.allowsTapToDismiss = true
+    self.backgroundInteraction = .dismiss
     self.onPresent = {
       UINotificationFeedbackGenerator().notificationOccurred(.warning)
     }

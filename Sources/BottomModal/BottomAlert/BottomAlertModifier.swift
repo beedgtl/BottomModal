@@ -104,6 +104,7 @@ public struct BottomAlertModifier<AlertContent: View>: ViewModifier {
       panModalConfiguration.allowsTapToDismiss = configuration.allowsTapToDismiss
       panModalConfiguration.cornerRadius = 0
       panModalConfiguration.panModalPanelColor = .clear
+      panModalConfiguration.backgroundInteraction = configuration.backgroundInteraction
 
       let panModalController = IntrinsicPanModalController(
         rootViewController: rootViewController,
