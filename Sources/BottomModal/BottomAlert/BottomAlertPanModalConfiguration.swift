@@ -37,7 +37,6 @@ public struct BottomAlertPanModalConfiguration: PanModalConfiguration {
     self.panModalPanelColor = .clear
     self.backgroundInteraction = configuration.backgroundInteraction
 
-    self.panModalPanelColor = defaultPanModalConfiguration.panModalPanelColor
     self.anchorModalToLongForm = defaultPanModalConfiguration.anchorModalToLongForm
     self.topDismissInset = defaultPanModalConfiguration.topDismissInset
   }
