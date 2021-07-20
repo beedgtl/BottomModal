@@ -28,7 +28,7 @@ public final class FixedPanModalController: BasePanModalController {
   }
   var keyboardHeight: CGFloat = 0
 
-  init(
+  public init(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration,
     height: BottomSheetHeight

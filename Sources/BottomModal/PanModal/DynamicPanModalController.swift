@@ -28,7 +28,7 @@ public final class DynamicPanModalController: BasePanModalController {
     }
   }
 
-  init(
+  public init(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration,
     anchorHeight: BottomSheetHeight

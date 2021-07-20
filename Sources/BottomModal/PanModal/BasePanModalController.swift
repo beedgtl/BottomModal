@@ -58,7 +58,7 @@ public class BasePanModalController: UIViewController, PanModalPresentable, PanM
   private var rootViewFrameObservation: NSKeyValueObservation?
   private var subscriptions = Set<AnyCancellable>()
 
-  init(
+  public init(
     rootViewController: UIViewController,
     configuration: PanModalConfiguration
   ) {
