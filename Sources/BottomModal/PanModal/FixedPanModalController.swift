@@ -10,10 +10,10 @@ import Combine
 import SwiftUI
 import PanModal
 
-final class FixedPanModalController: BasePanModalController {
+public final class FixedPanModalController: BasePanModalController {
   let height: BottomSheetHeight
-  override var anchorModalToLongForm: Bool { panScrollable != nil }
-  override var longFormHeight: PanModalHeight { .contentHeight(fixedHeight + keyboardHeight) }
+  public override var anchorModalToLongForm: Bool { panScrollable != nil }
+  public override var longFormHeight: PanModalHeight { .contentHeight(fixedHeight + keyboardHeight) }
 
   var fixedHeight: CGFloat {
     switch height {
@@ -40,7 +40,7 @@ final class FixedPanModalController: BasePanModalController {
     )
   }
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     NSLayoutConstraint.activate([
       contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

@@ -10,14 +10,14 @@ import Combine
 import SwiftUI
 import PanModal
 
-final class IntrinsicPanModalController: BasePanModalController {
-  override var anchorModalToLongForm: Bool { false }
-  override var followScrollView: Bool { false }
-  override var longFormHeight: PanModalHeight { .intrinsicHeight }
+public final class IntrinsicPanModalController: BasePanModalController {
+  public override var anchorModalToLongForm: Bool { false }
+  public override var followScrollView: Bool { false }
+  public override var longFormHeight: PanModalHeight { .intrinsicHeight }
 
   private var bottomConstraint: NSLayoutConstraint?
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     let constraint = view.bottomAnchor.constraint(
       greaterThanOrEqualTo: contentView.bottomAnchor

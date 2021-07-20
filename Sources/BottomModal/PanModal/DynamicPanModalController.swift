@@ -10,11 +10,11 @@ import Combine
 import SwiftUI
 import PanModal
 
-final class DynamicPanModalController: BasePanModalController {
+public final class DynamicPanModalController: BasePanModalController {
   let anchorHeight: BottomSheetHeight
-  override var anchorModalToLongForm: Bool { panScrollable != nil }
-  override var longFormHeight: PanModalHeight { .maxHeight }
-  override var shortFormHeight: PanModalHeight { .contentHeight(fixedHeight) }
+  public override var anchorModalToLongForm: Bool { panScrollable != nil }
+  public override var longFormHeight: PanModalHeight { .maxHeight }
+  public override var shortFormHeight: PanModalHeight { .contentHeight(fixedHeight) }
 
   var fixedHeight: CGFloat {
     switch anchorHeight {
@@ -41,7 +41,7 @@ final class DynamicPanModalController: BasePanModalController {
   }
 
   
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     NSLayoutConstraint.activate([
       view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

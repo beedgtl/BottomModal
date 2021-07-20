@@ -94,17 +94,9 @@ public struct BottomAlertModifier<AlertContent: View>: ViewModifier {
         coordinator.panModalController == nil
       else { return }
 
-      var panModalConfiguration = DefaultPanModalConfiguration()
-      panModalConfiguration.springDamping = configuration.springDamping
-      panModalConfiguration.transitionDuration = configuration.transitionDuration
-      panModalConfiguration.transitionAnimationOptions = configuration.transitionAnimationOptions
-      panModalConfiguration.panModalBackgroundColor = configuration.backgroundColor
-      panModalConfiguration.allowsExtendedPanScrolling = configuration.allowsExtendedPanScrolling
-      panModalConfiguration.allowsDragToDismiss = configuration.allowsDragToDismiss
-      panModalConfiguration.allowsTapToDismiss = configuration.allowsTapToDismiss
-      panModalConfiguration.cornerRadius = 0
-      panModalConfiguration.panModalPanelColor = .clear
-      panModalConfiguration.backgroundInteraction = configuration.backgroundInteraction
+      let panModalConfiguration = BottomAlertPanModalConfiguration(
+        configuration: configuration
+      )
 
       let panModalController = IntrinsicPanModalController(
         rootViewController: rootViewController,

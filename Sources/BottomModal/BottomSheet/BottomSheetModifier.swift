@@ -97,19 +97,9 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
         coordinator.panModalController == nil
       else { return }
 
-      var panModalConfiguration = DefaultPanModalConfiguration()
-      panModalConfiguration.cornerRadius = configuration.cornerRadius
-      panModalConfiguration.springDamping = configuration.springDamping
-      panModalConfiguration.transitionDuration = configuration.transitionDuration
-      panModalConfiguration.transitionAnimationOptions = configuration.transitionAnimationOptions
-      panModalConfiguration.panModalBackgroundColor = configuration.panModalBackgroundColor
-      panModalConfiguration.panModalPanelColor = configuration.panModalPanelColor
-      panModalConfiguration.anchorModalToLongForm = configuration.anchorModalToLongForm
-      panModalConfiguration.allowsExtendedPanScrolling = configuration.allowsTapToDismiss
-      panModalConfiguration.allowsDragToDismiss = configuration.allowsDragToDismiss
-      panModalConfiguration.allowsTapToDismiss = configuration.allowsTapToDismiss
-      panModalConfiguration.backgroundInteraction = configuration.backgroundInteraction
-      panModalConfiguration.topDismissInset = configuration.topDismissInset
+      let panModalConfiguration = BottomSheetPanModalConfiguration(
+        configuration: configuration
+      )
 
       var panModalController = presentationStyle.makePanModalController(
         rootViewController: rootViewController,

@@ -10,12 +10,12 @@ import Combine
 import SwiftUI
 import PanModal
 
-final class FullPanModalController: BasePanModalController {
-  override var anchorModalToLongForm: Bool { panScrollable != nil }
-  override var longFormHeight: PanModalHeight { .maxHeight }
-  override var shortFormHeight: PanModalHeight { longFormHeight }
+public final class FullPanModalController: BasePanModalController {
+  public override var anchorModalToLongForm: Bool { panScrollable != nil }
+  public override var longFormHeight: PanModalHeight { .maxHeight }
+  public override var shortFormHeight: PanModalHeight { longFormHeight }
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     NSLayoutConstraint.activate([
       view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
