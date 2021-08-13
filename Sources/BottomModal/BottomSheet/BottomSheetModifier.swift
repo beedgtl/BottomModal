@@ -80,6 +80,11 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
   public func body(content: Content) -> some View {
     Group {
       content
+        .background(
+          PresentingViewController(
+            viewController: coordinator.presentingViewController
+          )
+        )
       if isPresented {}
     }
     .onReceive(presentPublisher) { rootView in
@@ -118,9 +123,8 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
 
       switch presentationTarget {
       case .controller:
-        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-        let controller = window?.rootViewController?.contentViewController()
-        controller?.present(panModalController, animated: true)
+        let controller = coordinator.presentingViewController
+        controller.present(panModalController, animated: true)
       case .window:
         let windowScene = UIApplication.shared.connectedScenes.first
         if let windowScene = windowScene as? UIWindowScene {
@@ -152,6 +156,7 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
 
   class Coordinator<Content>: ObservableObject where Content: View {
     var window: UIWindow?
+    let presentingViewController: UIViewController = UIViewController()
     var sheetContentController: UIHostingController<AnyView>?
     var panModalController: UIViewController?
 
@@ -162,4 +167,17 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
       sheetContentController = nil
     }
   }
+}
+
+private struct PresentingViewController: UIViewControllerRepresentable {
+  let viewController: UIViewController
+
+  func makeUIViewController(context: Context) -> some UIViewController {
+    return viewController
+  }
+
+  func updateUIViewController(
+    _ uiViewController: UIViewControllerType,
+    context: Context
+  ) {}
 }
