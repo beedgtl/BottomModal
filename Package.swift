@@ -16,7 +16,7 @@ let package = Package(
     .package(
       name: "PanModal",
       url: "https://github.com/baevra/PanModal",
-      .exact("1.2.10")
+      .exact("1.2.12")
     )
   ],
   targets: [
