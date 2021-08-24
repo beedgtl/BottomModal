@@ -37,9 +37,11 @@ public class BasePanModalController: UIViewController, PanModalPresentable, PanM
   public var showDragIndicator: Bool { false }
   public var isHapticFeedbackEnabled: Bool { false }
   public var scrollIndicatorInsets: UIEdgeInsets { .zero }
-  public var bottomSafeArea: CGFloat {
-    presentingViewController?.view.safeAreaInsets.bottom ?? 0
+
+  public var topOffset: CGFloat {
+    topLayoutOffset + configuration.additionalTopOffset
   }
+  
   // swiftlint:disable:next identifier_name
   var _panScrollable: UIScrollView?
   public var panScrollable: UIScrollView? {
@@ -102,13 +104,33 @@ public class BasePanModalController: UIViewController, PanModalPresentable, PanM
     view.backgroundColor = configuration.panModalPanelColor
     view.addSubview(rootViewController.view)
     addChild(rootViewController)
+
     rootViewController.view.backgroundColor = .clear
     rootViewController.view.translatesAutoresizingMaskIntoConstraints = false
     rootViewController.didMove(toParent: self)
   }
 
+  public override func viewSafeAreaInsetsDidChange() {
+    super.viewSafeAreaInsetsDidChange()
+    updateSafeArea()
+  }
+
+  public override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    updateSafeArea()
+  }
+
+  func updateSafeArea() {
+    let windowSafeAreaInsets = view.window?.safeAreaInsets ?? .zero
+    rootViewController.additionalSafeAreaInsets.bottom = bottomLayoutOffset - windowSafeAreaInsets.bottom
+  }
+
   public func panModalDidDismiss() {
     onDismiss?()
+  }
+
+  public func willTransition(to state: PanModalPresentationController.PresentationState) {
+
   }
 
   public func shouldPrioritize(

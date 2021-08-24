@@ -47,6 +47,7 @@ public protocol BottomSheetConfiguration {
   var topDismissInset: CGFloat { get }
   var onPresent: (() -> Void)? { get }
   var onDismiss: (() -> Void)? { get }
+  var additionalTopOffset: CGFloat { get }
 }
 
 // MARK: - Default Configuration
@@ -65,6 +66,7 @@ public struct DefaultBottomSheetConfiguration: BottomSheetConfiguration {
   public var topDismissInset: CGFloat
   public var onPresent: (() -> Void)?
   public var onDismiss: (() -> Void)?
+  public var additionalTopOffset: CGFloat
 
   public init() {
     self.cornerRadius = 8
@@ -87,5 +89,6 @@ public struct DefaultBottomSheetConfiguration: BottomSheetConfiguration {
       UISelectionFeedbackGenerator().selectionChanged()
     }
     self.onDismiss = nil
+    self.additionalTopOffset = 21.0
   }
 }

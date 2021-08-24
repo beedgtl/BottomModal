@@ -23,6 +23,7 @@ public protocol PanModalConfiguration {
   var allowsTapToDismiss: Bool { get }
   var backgroundInteraction: PanModalBackgroundInteraction { get }
   var topDismissInset: CGFloat { get }
+  var additionalTopOffset: CGFloat { get }
 }
 
 // MARK: - Default Configuration
@@ -39,6 +40,7 @@ public struct DefaultPanModalConfiguration: PanModalConfiguration {
   public var allowsTapToDismiss: Bool
   public var backgroundInteraction: PanModalBackgroundInteraction
   public var topDismissInset: CGFloat
+  public var additionalTopOffset: CGFloat
 
   public init() {
     self.cornerRadius = 8
@@ -57,5 +59,6 @@ public struct DefaultPanModalConfiguration: PanModalConfiguration {
     self.allowsTapToDismiss = true
     self.backgroundInteraction = .dismiss
     self.topDismissInset = 0
+    self.additionalTopOffset = 21.0
   }
 }

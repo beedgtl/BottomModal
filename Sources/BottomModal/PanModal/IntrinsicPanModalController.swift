@@ -33,7 +33,7 @@ public final class IntrinsicPanModalController: BasePanModalController {
   }
 
   override func keyboardHeightWillChange(to height: CGFloat) {
-    bottomConstraint?.constant = max(0, height - bottomSafeArea)
+    bottomConstraint?.constant = max(0, height - bottomLayoutOffset)
     panModalSetNeedsLayoutUpdate()
     panModalTransition(to: .longForm)
   }

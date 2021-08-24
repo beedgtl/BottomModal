@@ -22,6 +22,7 @@ public struct BottomAlertPanModalConfiguration: PanModalConfiguration {
   public var allowsTapToDismiss: Bool
   public var backgroundInteraction: PanModalBackgroundInteraction
   public var topDismissInset: CGFloat
+  public var additionalTopOffset: CGFloat
 
   public init(configuration: BottomAlertConfiguration) {
     let defaultPanModalConfiguration = DefaultPanModalConfiguration()
@@ -39,5 +40,6 @@ public struct BottomAlertPanModalConfiguration: PanModalConfiguration {
 
     self.anchorModalToLongForm = defaultPanModalConfiguration.anchorModalToLongForm
     self.topDismissInset = defaultPanModalConfiguration.topDismissInset
+    self.additionalTopOffset = defaultPanModalConfiguration.additionalTopOffset
   }
 }

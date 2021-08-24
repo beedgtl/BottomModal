@@ -22,6 +22,7 @@ public struct BottomSheetPanModalConfiguration: PanModalConfiguration {
   public var allowsTapToDismiss: Bool
   public var backgroundInteraction: PanModalBackgroundInteraction
   public var topDismissInset: CGFloat
+  public var additionalTopOffset: CGFloat
 
   public init(configuration: BottomSheetConfiguration) {
     self.cornerRadius = configuration.cornerRadius
@@ -36,5 +37,6 @@ public struct BottomSheetPanModalConfiguration: PanModalConfiguration {
     self.allowsTapToDismiss = configuration.allowsTapToDismiss
     self.backgroundInteraction = configuration.backgroundInteraction
     self.topDismissInset = configuration.topDismissInset
+    self.additionalTopOffset = configuration.additionalTopOffset
   }
 }
