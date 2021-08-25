@@ -44,11 +44,14 @@ public class BasePanModalController: UIViewController, PanModalPresentable, PanM
   
   // swiftlint:disable:next identifier_name
   var _panScrollable: UIScrollView?
+  var isScrollViewScanned = false
   public var panScrollable: UIScrollView? {
     guard followScrollView else { return nil }
+    guard !isScrollViewScanned else { return _panScrollable }
     guard let scrollView = _panScrollable else {
       view.layoutIfNeeded()
       _panScrollable = rootViewController.view.firstSubview(of: UIScrollView.self)
+      isScrollViewScanned = true
       return _panScrollable
     }
     return scrollView
