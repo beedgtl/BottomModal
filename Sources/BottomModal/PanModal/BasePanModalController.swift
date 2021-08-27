@@ -125,7 +125,7 @@ public class BasePanModalController: UIViewController, PanModalPresentable, PanM
 
   func updateSafeArea() {
     let windowSafeAreaInsets = view.window?.safeAreaInsets ?? .zero
-    rootViewController.additionalSafeAreaInsets.bottom = bottomLayoutOffset - windowSafeAreaInsets.bottom
+    additionalSafeAreaInsets.bottom = bottomLayoutOffset - windowSafeAreaInsets.bottom
   }
 
   public func panModalDidDismiss() {
