@@ -128,16 +128,21 @@ public struct BottomSheetModifier<SheetContent: View>: ViewModifier {
       case .window:
         let windowScene = UIApplication.shared.connectedScenes.first
         if let windowScene = windowScene as? UIWindowScene {
+          let rootViewController = WindorRootViewController { [unowned panModalController] viewController in
+            viewController.present(panModalController, animated: true)
+          }
+          rootViewController.view.backgroundColor = .clear
+
           let window = UIWindow(windowScene: windowScene)
-          coordinator.window = window
-          let windowRootViewController = UIViewController()
-          windowRootViewController.view.backgroundColor = .clear
-          window.rootViewController = windowRootViewController
+          window.rootViewController = rootViewController
           window.windowLevel = UIWindow.Level.statusBar - 1
           window.makeKeyAndVisible()
-          // fix unbalance calls warning
-          DispatchQueue.main.async {
-            windowRootViewController.present(panModalController, animated: true)
+          coordinator.window = window
+
+          DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(700)) {
+            if rootViewController.presentedViewController == nil {
+              assertionFailure("BottomSheetModifier: PanModalController not presented from \(rootViewController) \(rootViewController.view.frame)")
+            }
           }
         }
       }
