@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -15,7 +15,7 @@ let package = Package(
   dependencies: [
     .package(
       name: "PanModal",
-      url: "https://github.com/baevra/PanModal",
+      url: "https://github.com/beedgtl/PanModal",
       .exact("1.2.13")
     )
   ],

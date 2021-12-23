@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "PanModal",
-        "repositoryURL": "https://github.com/baevra/PanModal",
+        "repositoryURL": "https://github.com/beedgtl/PanModal",
         "state": {
           "branch": null,
           "revision": "ade62a5866de09a3c9052078765d64e1dfb922f2",

@@ -22,7 +22,7 @@ extension UIHostingController {
   }
 
   func disableSafeArea() {
-    #if swift(>=5.5)
+    #if swift(>=5.6)
     #warning("Check disableSafeArea method in UIHostingController+.swift")
     #endif
     guard let viewClass = object_getClass(view) else { return }
